@@ -1,0 +1,126 @@
+@import "compass","reset";
+
+/* main color */
+
+$text-color: #eee;
+$bg-color: #2c3e50;
+$link-color: #333;
+$link-color-active: #ededed;
+$second-color: #fefefe;
+
+/* another variables */
+
+$global-radius: 5px;
+$global-border: #ddd;
+
+*, *:before, *:after {
+  @include box-sizing(border-box);
+}
+
+.clearfix {
+  @include pie-clearfix;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+
+%button{
+  background:$second-color;
+  color: $link-color;
+  cursor: pointer;
+  height: 40px;
+  line-height: 30px;
+  font-size: 16px;
+  border-radius: $global-radius $global-radius 0 0;
+  border: 1px solid $global-border;
+  padding: 5px 20px;
+  display: inline-block;
+  &:hover{
+    background-color: darken($second-color, 10%);
+  }
+}
+
+
+html{
+  background:$bg-color;
+  height: 100%;
+}
+body{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  min-height: 100%;
+  color: $text-color;
+}
+
+.b-header{
+  text-align: center;
+  padding-top: 70px;
+  background:darken($second-color, 60%);
+  text-transform: capitalize;
+  padding-bottom: 70px;
+  &__title{
+    margin-bottom: 20px;
+    font-size: 40px;
+    font-weight: bold; 
+  }
+  &__description{
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+}
+
+.b-content{
+  padding: 30px 0;
+  max-width: 1200px;
+  margin: auto;
+  &__header{
+    margin-bottom: 15px;
+  }
+
+}
+
+.b-tabs{
+  @include pie-clearfix;
+  &__item{
+    float: left;
+    @extend %button;
+    padding: 0;
+    span{
+      padding: 5px 20px;
+      display: inline-block;
+    }
+    &:not(&_add){
+      margin-left: 15px;
+    }
+    &:first-child{
+      margin-left: 0;
+    }
+    &_add{
+      margin-left: 5px;
+      padding: 5px 20px;
+    }
+  }
+}
+
+.b-editor{
+  border: 1px solid $global-border;
+  border-radius: $global-radius;
+  min-height: 300px;
+  margin-bottom: 15px;
+}
+
+.b-action{
+  &__item{
+    @extend %button;
+    border-radius: $global-radius;
+  }
+}
+
+.b-result{
+  display: none;
+  @extend .b-editor;
+}
